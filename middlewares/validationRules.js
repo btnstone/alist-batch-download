@@ -1,6 +1,6 @@
 // validationRules.js
 
-const { body } = require('express-validator');
+const {body, query} = require('express-validator');
 
 const downloadListValidationRules = () => {
     return [
@@ -11,6 +11,13 @@ const downloadListValidationRules = () => {
     ];
 };
 
+const searchParamsValidationRules = () => {
+    return [
+        query('shareCode').isString().withMessage('shareCode must be a string').notEmpty().withMessage('shareCode cannot be empty')
+    ];
+};
+
 module.exports = {
-    downloadListValidationRules
+    downloadListValidationRules,
+    searchParamsValidationRules
 };
